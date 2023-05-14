@@ -392,6 +392,8 @@ img {
     text-decoration: none;
     color: var(--dark);
     text-decoration: none;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .container {
@@ -402,6 +404,7 @@ img {
 }
 
 .first-menu {
+    position: relative;
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: 0.02em;
@@ -411,6 +414,29 @@ img {
 .link:hover,
 .link:focus {
     color: var(--pressed-state);
+}
+
+.first-menu::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+}
+
+.portfolio-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.first-menu.current {
+  color: var(--pressed-state);
+}
+
+.first-menu.current::after {
+  background-color: var(--pressed-state);
 }
 
 .logo {
@@ -446,6 +472,7 @@ img {
     cursor: pointer;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover,
@@ -580,16 +607,15 @@ img {
     background-color: var(--light);
     padding: 12px 24px;
     border: 1px solid var(--accent);
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-port:hover,
 .button-port:focus {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
-}
-
-.button-port:hover,
-.button-port:focus {
-    border: 1px solid transparent;
+  border: 1px solid transparent;
+  color: var(--white-background);
+  background-color: var(--primary-brand);
 }
 
 .header {
@@ -616,7 +642,7 @@ img {
     display: flex;
     gap: 40px;
     justify-content: center;
-    padding: 24px 0;
+    padding: 20.5px 0;
 }
 
 .adress-list {
@@ -718,6 +744,7 @@ img {
   height: 100%;
   background-color: var(--primary-brand);
   border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .socials-link:hover,
@@ -753,6 +780,7 @@ img {
   height: 100%;
   border: 1px solid var(--subtle-text);
   border-radius: 4px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-link:hover,
@@ -804,6 +832,7 @@ img {
   height: 100%;
   background-color: var(--primary-brand);
   border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-link:hover,
@@ -817,6 +846,7 @@ img {
 
 .glob-portfolio-link {
   display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glob-portfolio-link:hover,
@@ -826,4 +856,75 @@ img {
 
 .info-p {
   margin-bottom: 0px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  background-color: var(--primary-brand);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay-label {
+  color: var(--light);
+}
+
+.glob-port-photo-li:hover .overlay {
+  transform: translateY(0);
+
+}
+
+/* Modal styles */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.7);
+
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 408px;
+  min-height: 576px;
+  padding: 24px;
+  background-color: var(--modal-background);
+  border-radius: 8px;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.modal-btn {
+  display: block;
+  margin-left: auto;
+
+  width: 30px;
+  height: 30px;
+
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+.modal-icon {
 }
